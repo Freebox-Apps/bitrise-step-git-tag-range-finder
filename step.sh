@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-git fetch -p -P --tags
+git fetch -p -P --tags --no-recurse-submodules
 
 tags=$(git tag -l "${tag_pattern}" --sort=-version:refname)
 
