@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-git fetch --tags
+git fetch -p -P --tags
 
 tags=$(git tag -l "${tag_pattern}" --sort=-version:refname)
 
