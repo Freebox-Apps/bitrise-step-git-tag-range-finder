@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
+if "$is_debug" = "true"; then
+    set -x
+fi
+
 git fetch -p -P --tags --no-recurse-submodules --quiet
 
 tags=$(git tag -l "${tag_pattern}" --sort=-creatordate)
+
+if "$is_debug" = "true"; then
+    echo $tags
+fi
 
 echo -e $tags | while read -r -a tags_array; do
     commit_start=$(git show-ref -s "${tags_array[1]}")
