@@ -72,10 +72,20 @@ inputs:
 outputs:
   - GIT_TAG_START:
     opts:
-      title: "The oldest commit"
+      title: "The oldest tag"
       description: |
        The oldest commit
   - GIT_TAG_END:
+    opts:
+      title: "The earliest tag"
+      description: |
+       The earliest commit
+  - GIT_COMMIT_START:
+    opts:
+      title: "The oldest commit"
+      description: |
+       The oldest commit
+  - GIT_COMMIT_END:
     opts:
       title: "The earliest commit"
       description: |
