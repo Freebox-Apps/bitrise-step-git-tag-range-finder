@@ -36,6 +36,6 @@ echo -e $tags | while read -r -a tags_array; do
     envman add --key GIT_COMMIT_START --value "${commit_start}"
     envman add --key GIT_COMMIT_END --value "${commit_end}"
 
-    echo "Start commit ${tags_array[1]} (${commit_start})"
-    echo "End commit ${tags_array[0]} (${commit_end})"
+    echo "Start commit ${tag_start} (${commit_start})"
+    echo "End commit ${tag_end} (${commit_end})"
 done
