@@ -29,8 +29,8 @@ echo -e $tags | while read -r -a tags_array; do
         ;;
     esac
     
-    commit_start=$(git show-ref -s "${tag_start}")
-    commit_end=$(git show-ref -s "${tag_end}")
+    commit_start=$(git log -1 --format=%H "${tag_start}")
+    commit_end=$(git log -1 --format=%H "${tag_end}")
     envman add --key GIT_TAG_START --value "${tag_start}"
     envman add --key GIT_TAG_END --value "${tag_end}"
     envman add --key GIT_COMMIT_START --value "${commit_start}"
