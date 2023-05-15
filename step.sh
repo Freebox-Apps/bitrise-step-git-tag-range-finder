@@ -14,10 +14,25 @@ if "$is_debug" = "true"; then
 fi
 
 echo -e $tags | while read -r -a tags_array; do
-    commit_start=$(git show-ref -s "${tags_array[1]}")
-    commit_end=$(git show-ref -s "${tags_array[0]}")
-    envman add --key GIT_TAG_START --value "${tags_array[1]}"
-    envman add --key GIT_TAG_END --value "${tags_array[0]}"
+    case ${#ArrayName[@]} in
+        0)
+            tag_start="HEAD^"
+            tag_end="HEAD"
+        ;;
+        1)
+            tag_start="${tags_array[0]}"
+            tag_end="HEAD"
+        ;;
+        *)
+            tag_start="${tags_array[1]}"
+            tag_end="${tags_array[0]}"
+        ;;
+    esac
+    
+    commit_start=$(git show-ref -s "${tag_start}")
+    commit_end=$(git show-ref -s "${tag_end}")
+    envman add --key GIT_TAG_START --value "${tag_start}"
+    envman add --key GIT_TAG_END --value "${tag_end}"
     envman add --key GIT_COMMIT_START --value "${commit_start}"
     envman add --key GIT_COMMIT_END --value "${commit_end}"
 
