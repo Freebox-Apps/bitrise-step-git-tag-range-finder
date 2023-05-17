@@ -14,7 +14,7 @@ if "$is_debug" = "true"; then
 fi
 
 echo -e $tags | while read -r -a tags_array; do
-    case ${#ArrayName[@]} in
+    case ${#tags_array[@]} in
         0)
             tag_start="HEAD^"
             tag_end="HEAD"
