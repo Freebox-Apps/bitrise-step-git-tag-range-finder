@@ -82,21 +82,31 @@ inputs:
 outputs:
   - GIT_TAG_START:
     opts:
-      title: "The oldest tag"
+      title: "(deprecated) The oldest tag"
       description: |
        The oldest commit
   - GIT_TAG_END:
     opts:
-      title: "The earliest tag"
+      title: "(deprecated) The earliest tag"
       description: |
        The earliest commit
   - GIT_COMMIT_START:
     opts:
-      title: "The oldest commit"
+      title: "(deprecated) The oldest commit"
       description: |
        The oldest commit
   - GIT_COMMIT_END:
     opts:
-      title: "The earliest commit"
+      title: "(deprecated) The earliest commit"
       description: |
        The earliest commit
+  - GIT_LAST_TAG:
+    opts:
+      title: "The most recent tag"
+      description: |
+       The most recent tag matching the pattern
+  - GIT_LAST_COMMIT:
+    opts:
+      title: "The most recent commit"
+      description: |
+       The commit pointed by the most recent tag 

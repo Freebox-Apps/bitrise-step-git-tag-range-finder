@@ -18,24 +18,32 @@ echo -e $tags | while read -r -a tags_array; do
         0)
             tag_start="HEAD^"
             tag_end="HEAD"
+            last_tag="HEAD"
         ;;
         1)
             tag_start="${tags_array[0]}"
             tag_end="HEAD"
+            last_tag=$tag_start
         ;;
         *)
             tag_start="${tags_array[1]}"
             tag_end="${tags_array[0]}"
+            last_tag=$tag_end
         ;;
     esac
     
     commit_start=$(git log -1 --format=%H "${tag_start}")
     commit_end=$(git log -1 --format=%H "${tag_end}")
+    last_commit=$(git log -1 --format=%H "${last_tag}")
     envman add --key GIT_TAG_START --value "${tag_start}"
     envman add --key GIT_TAG_END --value "${tag_end}"
     envman add --key GIT_COMMIT_START --value "${commit_start}"
     envman add --key GIT_COMMIT_END --value "${commit_end}"
+    envman add --key GIT_LAST_COMMIT --value "${last_commit}"
+    envman add --key GIT_LAST_TAG --value "${last_tag}"
 
     echo "Start commit ${tag_start} (${commit_start})"
     echo "End commit ${tag_end} (${commit_end})"
+    echo "Last commit ${last_tag} (${last_commit})"
 done
+
